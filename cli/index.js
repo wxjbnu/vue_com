@@ -1,4 +1,8 @@
-// const colors = require('colors')
+#! node
+
+'use strict';
+
+const colors = require('colors')
 const path = require('path')
 const fs = require('fs')
 const readlineSync = require('readline-sync')
