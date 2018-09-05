@@ -1,5 +1,7 @@
+#!/usr/bin/env node --harmony
+
 'use strict';
 
 process.title = 'wxj-vue-rollup';
 
-require('../cli/index');
+require('../cli/index.js');

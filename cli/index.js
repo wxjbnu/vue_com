@@ -1,6 +1,3 @@
-// #! node
-
-'use strict';
 
 const colors = require('colors')
 const path = require('path')
