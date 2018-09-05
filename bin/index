@@ -1,0 +1,5 @@
+'use strict';
+
+process.title = 'index';
+
+require('../cli/index');
