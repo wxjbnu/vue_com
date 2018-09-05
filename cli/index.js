@@ -1,4 +1,4 @@
-require('colors')
+// const colors = require('colors')
 const path = require('path')
 const fs = require('fs')
 const readlineSync = require('readline-sync')
@@ -23,7 +23,7 @@ const kebabcase = string => {
 const ensureDirectoryExists = filePath => {
   const dirname = path.dirname(filePath)
   if (fs.existsSync(dirname)) {
-    console.log('文件已经存在'.red)
+    console.log('文件已经存在')
     return true
   }
   ensureDirectoryExists(dirname)
