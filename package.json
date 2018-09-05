@@ -1,0 +1,34 @@
+{
+  "name": "vue_com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "vue-rollup-cli": "./cli/index.js"
+  },
+  "scripts": {
+    "test": "node ./cli/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wxjbnu/vue_com.git"
+  },
+  "keywords": [
+    "vue",
+    "rollup"
+  ],
+  "author": "wxj",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wxjbnu/vue_com/issues"
+  },
+  "homepage": "https://github.com/wxjbnu/vue_com#readme",
+  "dependencies": {
+    "colors": "^1.3.2",
+    "commander": "^2.17.1",
+    "fs": "0.0.1-security",
+    "path": "^0.12.7",
+    "readline-sync": "^1.4.9",
+    "update-notifier": "^2.5.0"
+  }
+}
