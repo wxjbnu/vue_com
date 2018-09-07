@@ -129,6 +129,7 @@ function genFile(npmName) {
 // }
 
 // npm输入
+console.log('输入内容...'.red)
 program
   .command('create <name>')
   .alias('c')
@@ -155,3 +156,7 @@ program
     //     console.log('下载完毕'.green)
     // })
 })
+
+program.parse(process.argv);
+
+if (!program.args.length) program.help();
