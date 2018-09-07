@@ -1,7 +1,3 @@
-#! node
-
-'use strict';
-
 require('colors');
 var path = require('path');
 var fs = require('fs');
