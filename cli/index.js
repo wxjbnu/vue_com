@@ -1,19 +1,22 @@
+#! node
 
-const colors = require('colors')
-const path = require('path')
-const fs = require('fs')
-const readlineSync = require('readline-sync')
+'use strict';
 
-const program = require('commander')
-const updateNotifier = require('update-notifier')
-const pkg = require('../package.json')
+require('colors');
+var path = require('path');
+var fs = require('fs');
+var readlineSync = require('readline-sync');
+
+var program = require('commander');
+var updateNotifier = require('update-notifier');
+var pkg = require('../package.json');
 
 // ==========驼峰和-互相转换==========
-const pascalify = str => {
-  const camelized = str.replace(/-([a-z])/g, c => c[1].toUpperCase())
+var  pascalify = str => {
+  var  camelized = str.replace(/-([a-z])/g, c => c[1].toUpperCase())
   return camelized.charAt(0).toUpperCase() + camelized.slice(1)
 }
-const kebabcase = string => {
+var  kebabcase = string => {
   return string
   .replace(/([a-z])([A-Z])/g, '$1-$2')
   .replace(/\s+/g, '-')
@@ -21,20 +24,20 @@ const kebabcase = string => {
 }
 
 // ==========判断文件是否存在==========
-const ensureDirectoryExists = filePath => {
-  const dirname = path.dirname(filePath)
+var  ensureDirectoryExists = filePath => {
+  var  dirname = path.dirname(filePath)
   if (fs.existsSync(dirname)) {
-    console.log('文件已经存在')
+    // console.log('文件已经存在')
     return true
   }
   ensureDirectoryExists(dirname)
   fs.mkdirSync(dirname)
 }
 // ==========替换文件变量==========
-const replaceVars = function replaceVars(str, vars) {
+var  replaceVars = function replaceVars(str, vars) {
   let newstr = str
   Object.keys(vars).forEach(key => {
-    const rx = new RegExp('{{\\s?' + key + '\\s?}}', 'g')
+    var  rx = new RegExp('{{\\s?' + key + '\\s?}}', 'g')
     newstr = newstr.replace(rx, vars[key])
   })
   return newstr
@@ -43,19 +46,19 @@ const replaceVars = function replaceVars(str, vars) {
 
 // =============生成文件=============
 function genFile(npmName) {
-  const componentName = kebabcase(npmName)
-  const componentNamePascal = pascalify(componentName)
+  var  componentName = kebabcase(npmName)
+  var  componentNamePascal = pascalify(componentName)
 
-  const vars = {
+  var  vars = {
     npmName,
     componentName,
     componentNamePascal
   }
 
-  const savePath = path.join(process.cwd(), componentName)
+  var  savePath = path.join(process.cwd(), componentName)
 
   // 
-  // const savePath = readlineSync.questionPath(
+  // var  savePath = readlineSync.questionPath(
   //   'Enter a location to save the component files: (./' + componentName + ') ',
   //   {
   //     defaultInput: path.join(process.cwd(), componentName),
@@ -65,7 +68,7 @@ function genFile(npmName) {
   //   }
   // )
 
-  const newFiles = {
+  var  newFiles = {
     package: '',
     rollupConfig: '',
     indexjs: '',
@@ -98,7 +101,7 @@ function genFile(npmName) {
   )
 
   // 输出的文件
-  const paths = {
+  var  paths = {
     package: path.join(savePath, 'package.json'),
     rollupConfig: path.join(savePath, 'build', 'rollup.config.js'),
     indexjs: path.join(savePath, 'src', 'index.js'),
@@ -112,6 +115,23 @@ function genFile(npmName) {
     fs.writeFileSync(paths[key], newFiles[key])
   })
 }
+
+
+
+// try{
+//   var stat = fs.statSync(path.join(process.cwd(), 'name'))
+//   if (stat.isDirectory()) {
+//     console.log('文件已经存在'.red)
+//     return true
+//   } else {
+//     console.log('文件不存在'.red)
+//   }
+// }catch(e){
+//   //捕获异常
+//   console.log('新建文件'.yellow)
+//   genFile('name')
+// }
+
 // npm输入
 program
   .command('create <name>')
@@ -120,13 +140,20 @@ program
   .action((template, name, options) => {
     // let rootDir = path.join(process.cwd(), name)
     // console.log(path.join(process.cwd(), name))
-    
-    if (fs.existsSync(path.join(process.cwd(), name))) {
-      console.log('文件已经存在'.red)
-      return true
+    try{
+      var stat = fs.statSync(path.join(process.cwd(), name))
+      if (stat.isDirectory()) {
+        console.log('文件已经存在'.red)
+        return true
+      } else {
+        console.log('文件不存在'.red)
+      }
+    }catch(e){
+      //捕获异常
+      console.log('新建文件'.yellow)
+      console.log('初始化项目...'.green)
+      genFile(name)
     }
-    genFile(name)
-    console.log('初始化项目...'.green)
     // download(template, rootDir, (err) => {
     //     console.log('下载完毕'.green)
     // })
