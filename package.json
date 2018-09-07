@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "bin": {
-    "wxj-vue-rollup": "./bin/index.js"
+    "wxj-vue-rollup": "./bin/index"
   },
   "scripts": {
     "test": "node ./cli/index.js"
