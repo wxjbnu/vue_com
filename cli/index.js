@@ -134,7 +134,7 @@ program
   .command('create <name>')
   .alias('c')
   .description('下载模板')
-  .action((template, name, options) => {
+  .action((name, options) => {
     // let rootDir = path.join(process.cwd(), name)
     // console.log(path.join(process.cwd(), name))
     console.log('开始执行...'.red)
