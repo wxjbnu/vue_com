@@ -1,10 +1,10 @@
 {
   "name": "wxj-vue-rollup",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "",
   "main": "index.js",
   "bin": {
-    "wxj-vue-rollup": "./cli/index.js"
+    "wxj-vue-rollup": "./bin/index.js"
   },
   "scripts": {
     "test": "node ./cli/index.js"
