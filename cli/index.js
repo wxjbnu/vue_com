@@ -136,6 +136,7 @@ program
   .action((template, name, options) => {
     // let rootDir = path.join(process.cwd(), name)
     // console.log(path.join(process.cwd(), name))
+    console.log('开始执行...'.red)
     try{
       var stat = fs.statSync(path.join(process.cwd(), name))
       if (stat.isDirectory()) {
