@@ -13,16 +13,12 @@ export default {
 	</div>
 </template>
 
-<template{{#pug}} lang="pug"{{/pug}}>
-  {{#pug}}
-  .{{componentName}}
-  {{else}}
+<template>
   <div class="{{componentName}}">
   </div>
-  {{/pug}}
 </template>
 
-<style {{#less}}lang="less"{{/less}}>
+<style lang="less" scoped>
 p{
 	margin: 0;
 }

@@ -129,7 +129,6 @@ function genFile(npmName) {
 // }
 
 // npm输入
-console.log('输入内容...'.red)
 program
   .command('create <name>')
   .alias('c')
