@@ -75,6 +75,14 @@ function genFile(npmName) {
     fs.readFileSync(path.join(__dirname, '../templates', 'package.json')).toString(),
     vars
   )
+  newFiles.sh = replaceVars(
+    fs.readFileSync(path.join(__dirname, '../templates', 'build.sh')).toString(),
+    vars
+  )
+  newFiles.rd = replaceVars(
+    fs.readFileSync(path.join(__dirname, '../templates', 'README.md')).toString(),
+    vars
+  )
   newFiles.rollupConfig = replaceVars(
     fs
       .readFileSync(
@@ -99,6 +107,8 @@ function genFile(npmName) {
   // 输出的文件
   var  paths = {
     package: path.join(savePath, 'package.json'),
+    sh: path.join(savePath, 'build.sh'),
+    rd: path.join(savePath, 'README.md'),
     rollupConfig: path.join(savePath, 'build', 'rollup.config.js'),
     indexjs: path.join(savePath, 'src', 'index.js'),
     component: path.join(savePath, 'src', componentNamePascal + '.vue'),
