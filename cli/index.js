@@ -111,7 +111,7 @@ function genFile(npmName) {
     rd: path.join(savePath, 'README.md'),
     rollupConfig: path.join(savePath, 'build', 'rollup.config.js'),
     indexjs: path.join(savePath, 'src', 'index.js'),
-    component: path.join(savePath, 'src', componentNamePascal + '.vue'),
+    component: path.join(savePath, 'src', componentName + '.vue'),
     // testjs: path.join(savePath, 'test', testFileName),
     // storybookConfig: path.join(savePath, '.storybook', 'config.js'),
     // story: path.join(savePath, 'stories', 'index.js')
