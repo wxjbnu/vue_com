@@ -6,9 +6,10 @@
   "main": "dist/{{componentNamePascal}}.js",
 
   "scripts": {
+    "start": "sh build.sh /media/wxj/74BE276DBE2726D8/2018_git/21f_frontend/components/test_components",
     "dev": "rollup --config build/rollup.config.js --format umd --file dist/{{componentNamePascal}}.js",
     "build": "npm run build:unpkg & npm run build:es & npm run build:umd",
-    "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/{{componentNamePascal}}.umd.js",
+    "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/{{componentNamePascal}}.js",
     "build:es": "rollup --config build/rollup.config.js --format es --file dist/{{componentNamePascal}}.esm.js",
     "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/{{componentNamePascal}}.min.js"
   },
