@@ -13,11 +13,6 @@ export default {
 	</div>
 </template>
 
-<template>
-  <div class="{{componentName}}">
-  </div>
-</template>
-
 <style lang="less" scoped>
 p{
 	margin: 0;
